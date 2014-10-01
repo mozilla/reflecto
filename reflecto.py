@@ -74,7 +74,7 @@ def application(env, start_response):
 
     payload = dict(urlparse.parse_qsl(env['wsgi.input'].read()))['payload']
     repo = json.loads(payload)['repository']
-    url = clean(repo['url'] + '.git')
+    url = clean(repo['html_url'] + '.git')
     path = clean(repo['owner']['name'] + '/' + repo['name'])
 
     log.info('Updating %s => %s.' % (url, path))
